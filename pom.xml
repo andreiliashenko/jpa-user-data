@@ -29,6 +29,11 @@
             <version>1</version>
         </dependency>
         <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.anli.generalization</groupId>
             <artifactId>user-data</artifactId>
             <version>0.1</version>
@@ -36,6 +41,11 @@
         <dependency>
             <groupId>com.anli</groupId>
             <artifactId>jta-aop</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.anli</groupId>
+            <artifactId>jpa-jta-extensions</artifactId>
             <version>0.1</version>
         </dependency>
     </dependencies>
