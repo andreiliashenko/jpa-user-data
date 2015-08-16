@@ -6,6 +6,24 @@
     <artifactId>jpa-user-data</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.anli.generalization</groupId>
+            <artifactId>user-data</artifactId>
+            <version>0.1</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
