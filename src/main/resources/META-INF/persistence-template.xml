@@ -11,6 +11,8 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="eclipselink.target-server" value="JBoss" />
+            <property name="jboss.entity.manager.factory.jndi.name"
+                value="persistence-units/generalization"/>
         </properties>
     </persistence-unit>
 </persistence>

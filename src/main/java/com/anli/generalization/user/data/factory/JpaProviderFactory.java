@@ -9,8 +9,9 @@ import com.anli.jta.aop.JtaTransactionInterceptor;
 import com.anli.jta.aop.annotation.Transactional;
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import static com.google.inject.Guice.createInjector;
 import static com.google.inject.matcher.Matchers.annotatedWith;
@@ -48,11 +49,19 @@ public class JpaProviderFactory implements ProviderFactory {
         return injector.getInstance(UserProvider.class);
     }
 
-    private static class UserDataModule extends AbstractModule {
+    protected EntityManagerFactory getEntityManagerFactory() {
+        try {
+            return InitialContext.doLookup("persistence-units/" + UNIT_NAME);
+        } catch (NamingException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private class UserDataModule extends AbstractModule {
 
         @Override
         protected void configure() {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(UNIT_NAME);
+            EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
             bindListener(any(), new JtaPersistenceContextTypeListener(entityManagerFactory));
             bindInterceptor(any(), annotatedWith(Transactional.class),
                     new JtaTransactionInterceptor(TRANSACTION_MANAGER_JNDI_NAME));
