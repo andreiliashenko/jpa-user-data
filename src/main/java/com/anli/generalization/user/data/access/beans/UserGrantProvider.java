@@ -19,9 +19,9 @@ public class UserGrantProvider extends GenericProvider<JpaUserGrant>
     @Transactional(MANDATORY)
     public UserGrant create(BigInteger id) {
         checkArgument(id != null, "User Grant id can not be null");
-        checkArgument(MIN_GRANT_ID.compareTo(id) > 0,
+        checkArgument(MIN_GRANT_ID.compareTo(id) <= 0,
                 "User Grant id is less than minimum " + MIN_GRANT_ID);
-        checkArgument(MAX_GRANT_ID.compareTo(id) < 0,
+        checkArgument(MAX_GRANT_ID.compareTo(id) >= 0,
                 "User Grant id is greater than maximum " + MIN_GRANT_ID);
         checkArgument(getEntityById(id) == null, "User Grant with id = " + id + " already exists");
         JpaUserGrant grant = getEntityInstance();
