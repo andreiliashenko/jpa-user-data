@@ -121,13 +121,13 @@ public class UserGrantTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    @InSequence(3)
+    @InSequence(6)
     public void testCreation_shouldForbidNonTransactionalCall() {
         provider.create(bi(2000000000000000004L));
     }
 
     @Test
-    @InSequence(4)
+    @InSequence(7)
     public void testReading_shouldReadWithoutEdit() throws Exception {
         helper.createGrant(2000000000000000005L, "Read grant");
 
@@ -144,7 +144,7 @@ public class UserGrantTest {
     }
 
     @Test
-    @InSequence(5)
+    @InSequence(8)
     public void testReading_shouldReadNull() throws Exception {
         transaction.begin();
 
@@ -156,14 +156,14 @@ public class UserGrantTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    @InSequence(6)
+    @InSequence(9)
     public void testReading_shouldForbidNonTransactionalCall() {
         helper.createGrant(2000000000000000007L, "Created grant");
         provider.getById(bi(2000000000000000007L));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    @InSequence(7)
+    @InSequence(10)
     public void testReading_shouldCheckNullId() throws Exception {
         transaction.begin();
 
@@ -173,7 +173,7 @@ public class UserGrantTest {
     }
 
     @Test
-    @InSequence(8)
+    @InSequence(11)
     public void testUpdate_shouldUpdateData() throws Exception {
         helper.createGrant(2000000000000000008L, "Initial grant");
 
@@ -191,7 +191,7 @@ public class UserGrantTest {
     }
 
     @Test
-    @InSequence(9)
+    @InSequence(12)
     public void testUpdate_shouldRollbackUpdate() throws Exception {
         helper.createGrant(2000000000000000009L, "Initial grant");
 
@@ -209,7 +209,7 @@ public class UserGrantTest {
     }
 
     @Test
-    @InSequence(10)
+    @InSequence(13)
     public void testRemove_shouldRemoveData() throws Exception {
         helper.createGrant(2000000000000000010L, "Removed grant");
 
@@ -226,7 +226,7 @@ public class UserGrantTest {
     }
 
     @Test
-    @InSequence(12)
+    @InSequence(14)
     public void testRemove_shouldRollbackRemove() throws Exception {
         helper.createGrant(2000000000000000011L, "Rollback remove grant");
 
@@ -244,7 +244,7 @@ public class UserGrantTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    @InSequence(13)
+    @InSequence(15)
     public void testRemove_shouldForbidNonTransactionalCall() throws Exception {
         helper.createGrant(2000000000000000012L, "Non-removed grant");
 
@@ -258,7 +258,7 @@ public class UserGrantTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    @InSequence(14)
+    @InSequence(16)
     public void testRemove_shouldCheckNull() throws Exception {
         transaction.begin();
 
