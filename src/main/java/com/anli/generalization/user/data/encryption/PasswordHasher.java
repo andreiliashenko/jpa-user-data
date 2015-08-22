@@ -8,7 +8,7 @@ import static java.security.MessageDigest.getInstance;
 
 public class PasswordHasher {
 
-    private static final String ALGORITHM = "SHA_512";
+    private static final String ALGORITHM = "SHA-512";
     private static final byte[] salt = new byte[]{-52, 13, 103, -2};
 
     public static String hash(String password) {
