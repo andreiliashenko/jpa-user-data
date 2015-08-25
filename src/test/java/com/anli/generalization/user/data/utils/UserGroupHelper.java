@@ -54,7 +54,7 @@ public class UserGroupHelper extends SqlHelper {
             if (resultSet.next()) {
                 result.put("id", getBigInteger(resultSet.getValue("group_id", BigDecimal.class)));
                 result.put("name", resultSet.getValue("name", String.class));
-                result.put("parent", getBigInteger(resultSet.getValue("parentId", BigDecimal.class)));
+                result.put("parent", getBigInteger(resultSet.getValue("parent_id", BigDecimal.class)));
             } else {
                 return null;
             }
