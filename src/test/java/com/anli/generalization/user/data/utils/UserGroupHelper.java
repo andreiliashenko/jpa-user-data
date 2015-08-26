@@ -22,6 +22,8 @@ public class UserGroupHelper extends SqlHelper {
             + "where user_id = ?";
     private static final String SELECT_GROUPS_BY_PARENT = "select group_id from user_groups "
             + "where parent_id = ?";
+    private static final String SELECT_GROUPS_BY_GRANT = "select group_id from groups_to_grants "
+            + "where grant_id = ?";
 
     public UserGroupHelper(DataSource dataSource) {
         super(dataSource);
@@ -43,6 +45,11 @@ public class UserGroupHelper extends SqlHelper {
 
     public Collection<BigInteger> readGroupsByParent(BigInteger parentId) {
         return executor.executeSelect(SELECT_GROUPS_BY_PARENT, asList(new BigDecimal(parentId)),
+                new IdSelector());
+    }
+
+    public Collection<BigInteger> readGroupsByGrant(BigInteger grantId) {
+        return executor.executeSelect(SELECT_GROUPS_BY_GRANT, asList(new BigDecimal(grantId)),
                 new IdSelector());
     }
 
